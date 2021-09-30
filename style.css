@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  zoom: reset;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
   font-weight: 300;
   font-size:80px;
@@ -19,13 +20,17 @@ canvas {
   position: absolute;
   width:70%;
   max-width:800px;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
 
 .center {
   margin: 0;
   position: absolute;
   top: 50%;
-  left: 50%;
+ 0t: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
