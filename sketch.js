@@ -200,8 +200,7 @@ function setup() {
   pixelDensity(displayDensity());
   imageMode(CENTER);
   frameRate(24);
-  noStroke();
-  fill(0);
+  noStroke();  
   noSmooth(); 
 
   
