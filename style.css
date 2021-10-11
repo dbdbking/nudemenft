@@ -2,17 +2,13 @@ html, body {
   margin: 0;
   padding: 0;
   zoom: reset;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
-  font-weight: 300;
-  font-size:80px;
-  line-height: 30px;
+
 }
 canvas {
   position: fixed; 
   display: block;
   overflow-x: hidden; 
   overflow-y: auto;
-  
 }
 
 .overlay{
@@ -25,6 +21,10 @@ canvas {
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  font-weight: 300;
+  font-size:60px;
+  line-height: 30px;
 }
 
 .center {
