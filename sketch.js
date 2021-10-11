@@ -1,6 +1,6 @@
 ////////// NudemeNFT 2021
 ////////// By Francis Lam
-console.log("Nudemeniverse by Francis Lam 2021");
+console.log("-----  Nudemeniverse by Francis Lam 2021 ----");
 
 const isDebug=1;
 
@@ -23,7 +23,7 @@ let spacing;
 let unanimity; 
 
 /////
-const totalArt=100;
+const totalArt=103;
 const manWidth=50; 
 const offset=0.0;
 const offsetMax=manWidth*0.3;
@@ -51,7 +51,7 @@ function initMetadata(){
   //console.log(totalMen);
 
     if (artID==undefined) artID=78; //only init once
-    laziness=0.0* 0.995;  //can't >=1.0. //0.995 = barely visible
+    laziness=0.5* 0.995;  //can't >=1.0. //0.995 = barely visible
     time=1.0 * 0.01 + 0.001;
     if (defaultPose==undefined) defaultPose=4;  // walkL_0 walkR_1 runL_2 runR_3 sit_4 standup_5 standStill_6 tapFoot_7 jump_8 dance_9
     if (isDark==undefined) isDark=0;
@@ -63,7 +63,9 @@ function initMetadata(){
 }
 
 function preload(){
+  console.log("Start preload frames");
   preloadFrames();
+  console.log("End preload frames");
 }
 
 function imgYes(){   
@@ -78,6 +80,7 @@ function load404(){
   defaultPose=4;
   time=0.01;
   isDark=0;
+  console.log("loading art 404");
   img=loadImage("lib/404.png",createMen);  
 }
 
@@ -113,6 +116,8 @@ function createMen()
   for (let i=0; i<totalM; i++) men.pop();
   console.log("total men before:"+men.length);
 
+
+   console.log("Art: "+artID);
   ///create nudemen from the image
    let m=0;
    let maxX=0, minX=10000, maxY=0, minY=10000;
@@ -165,7 +170,7 @@ function createMen()
    } // end if img!=null
    imgW=maxX-minX+1;
    imgH=maxY-minY+1;
-   console.log("total men:"+men.length+" new imgW:"+imgW+" new imgH:"+imgH);
+   console.log("total men:"+men.length+" new imgW:"+imgW+" new imgH:"+imgH+"-------------");
   
   
   
@@ -184,8 +189,10 @@ function setup() {
 
   
   if (htmlSeed=="404") load404();
-  else img = loadImage("lib/art/"+artID+".png",imgYes,load404);  
-
+  else {
+    console.log("loading art: "+artID);
+    img = loadImage("lib/art/"+artID+".png",imgYes,load404);  
+  }
 
 
   applyColorTone();
@@ -493,7 +500,7 @@ function keyPressed() {
 }
 
 function allMenGotoWork(rn){
-  console.log("all men go to work!");
+  
   for (let i = 0; i < men.length; i++) {
     
     if (random(1)>lazyRatio) men[i].goWork(rn);
