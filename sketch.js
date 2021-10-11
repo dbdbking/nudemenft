@@ -2,7 +2,7 @@
 ////////// By Francis Lam
 console.log("-----  Nudemeniverse by Francis Lam 2021 ----");
 
-const isDebug=1;
+const isDebug=0;
 
 let seed=document.URL.split('=')[1];
 if (!seed) { 
@@ -23,7 +23,7 @@ let spacing;
 let unanimity; 
 
 /////
-const totalArt=103;
+const totalArt=120;
 const manWidth=50; 
 const offset=0.0;
 const offsetMax=manWidth*0.3;
@@ -31,7 +31,7 @@ const maxMen=2500;
 const borderRatio=0.05;
 const totalTones=4;
 const dimStep=35;
-let bgColor;
+let bgColor=240;
 const minSpeed=manWidth/50;
 const runSpeed=minSpeed*3;
 let men = []; // array of Nudeman objects
@@ -60,6 +60,8 @@ function initMetadata(){
 
     lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
 
+    bgColor=isDark?30:240;
+
 }
 
 function preload(){
@@ -69,6 +71,8 @@ function preload(){
 }
 
 function imgYes(){   
+
+   console.log("loaded art: "+artID);
    initMetadata();
    createMen();
 }
@@ -80,8 +84,12 @@ function load404(){
   defaultPose=4;
   time=0.01;
   isDark=0;
-  console.log("loading art 404");
-  img=loadImage("lib/404.png",createMen);  
+  loadArt("404",createMen); 
+}
+
+function loadArt(id,fYes,fNo){
+  console.log("loading art: "+id);
+  img = loadImage("lib/art/"+id+".png",fYes,fNo);
 }
 
 function applyColorTone(){
@@ -109,7 +117,7 @@ function applyColorTone(){
 function createMen()
 {
 
-  bgColor=isDark?30:240;
+  
    
   //remove 
   let totalM=men.length;
@@ -137,6 +145,7 @@ function createMen()
               let loc = (i + j*img.width)*4;
 
               let r=  img.pixels[loc];
+              let a=  img.pixels[loc+3];
               let c = color(img.pixels[loc], img.pixels[loc+1], img.pixels[loc+2]);
               let b = brightness(c); // 0-100;
 
@@ -147,7 +156,7 @@ function createMen()
               let totalShades=totalTones+1; //+ bg
               t=totalShades-1-Math.floor(b/(100/totalShades));
               if (!isDark) t--;
-              if (t>=0 && t<totalTones) { // skip bg
+              if (t>=0 && t<totalTones && a>0) { // skip bg
                 if (m<maxMen) {
                   men.push(new Nudeman(m)); 
                   men[m].workX=i;
@@ -181,19 +190,11 @@ function createMen()
 }
 
 function setup() {   
-
- 
-
   randomSeed(int(seed)); //deterministic
   initMetadata(seed);
-
   
   if (htmlSeed=="404") load404();
-  else {
-    console.log("loading art: "+artID);
-    img = loadImage("lib/art/"+artID+".png",imgYes,load404);  
-  }
-
+  else loadArt(artID,imgYes,load404);
 
   applyColorTone();
   createCanvas(windowWidth, windowHeight);
@@ -202,12 +203,7 @@ function setup() {
   frameRate(24);
   noStroke();  
   noSmooth(); 
-
-  
-   
-   //createMen();
-
-  
+  fill(0);
 }
 
 
@@ -441,11 +437,10 @@ class Nudeman {
 
     }
     
-    
     /////// animate frame
     if (poseIsLoop[this.pose] && this.frame>=poseTotalFrames[this.pose]) this.frame=0; 
-    let img = menImage[this.t][this.pose][this.frame];
-    image(img,this.x,this.y);
+    let tempImg = menImage[this.t][this.pose][this.frame];
+    image(tempImg,this.x,this.y);
     if (this.frame<poseTotalFrames[this.pose]-1 || poseIsLoop[this.pose]) this.frame++;
   }
   
@@ -469,31 +464,33 @@ function mousePressed() {
 }
 
 
+
+
 function keyPressed() {
  
       if (keyCode === RIGHT_ARROW) {
         if (artID>=totalArt-1) artID=0;
         else artID++;
-        img = loadImage("lib/art/"+artID+".png",imgYes,load404);  
+        loadArt(artID,imgYes,load404);  
         
       } else if (keyCode === LEFT_ARROW) {
         if (artID<=0) artID=totalArt-1;
         else artID--;
-        img = loadImage("lib/art/"+artID+".png",imgYes,load404);  
+        loadArt(artID,imgYes,load404);  
       } else if (keyCode === 32) {
 
         if (isDark) isDark=0;
         else isDark=1;
 
-        loadImage("lib/art/"+artID+".png",imgYes,load404); 
+        loadArt(artID,imgYes,load404);  
       } else if (keyCode === UP_ARROW) {
         defaultPose++;
         if (defaultPose>9) defaultPose=4;
-        img = loadImage("lib/art/"+artID+".png",imgYes,load404); 
+        loadArt(artID,imgYes,load404);  
       } else if (keyCode === DOWN_ARROW) {
         defaultPose--;
         if (defaultPose<4) defaultPose=9;
-        img = loadImage("lib/art/"+artID+".png",imgYes,load404); 
+        loadArt(artID,imgYes,load404);  
       }
   
 }
