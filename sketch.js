@@ -3,13 +3,13 @@
 console.log("-----  NudemeNFT by Francis Lam 2021 ----");
 const isDebug=0;
 
-let seed=document.URL.split('=')[1];
+let seed=document.URL.split('?s=')[1];
 if (!seed) { 
-  if (!isDebug && !htmlSeed.length) document.getElementById("intro").style.display = "block";
-  seed="0";
+  if (!isDebug && !htmlMsg.length) document.getElementById("intro").style.display = "block";
+  seed="intro";
 }
 
-console.log("seed:"+seed+" length:"+seed.length+" htmlSeed:"+htmlSeed);
+console.log("seed:"+seed+" length:"+seed.length+" htmlMsg:"+htmlMsg);
 ////// METADATA (0-1) * max + min
 let artID;
 let laziness;  //can't >=1.0. //0.995 = barely visible
@@ -114,6 +114,7 @@ function init404(){
   spacing=0.3;
   defaultPose=4;
   time=0.01;
+  unanimity=0.5
   isDark=0;
   ///related vars
   lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
@@ -131,11 +132,25 @@ function preload(){
   fsBut = loadImage("lib/fs.png");
 }
 
-
-
 function load404(){
- 
   init404();
+  loadArt(artID,createMen); 
+}
+
+
+function loadIntro(){
+  artID=91;
+  laziness=1.00;
+  spacing=1.0;
+  defaultPose=4;
+  time=0.01;
+  unanimity=0.9;
+  isDark=0;
+  ///related vars
+  lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
+  updateBg();
+
+  console.log("intro artid:"+artID);
   loadArt(artID,createMen); 
 }
 
@@ -245,7 +260,8 @@ function setup() {
   randomSeed(int(seed)); //deterministic
   initMetadata(seed);
   
-  if (htmlSeed=="404") load404();
+  if (htmlMsg=="404") load404();
+  else if (seed=="intro") loadIntro();
   else loadArt(artID,createMen,load404);
 
   applyColorTone();
@@ -264,6 +280,8 @@ function draw() {
   for (let i = 0; i < men.length; i++) men[i].display();
   
   if (!fullscreen()) image(fsBut,width-25, 25); //fs button  
+
+  
   
 }
 
@@ -515,7 +533,7 @@ function mousePressed() {
     fullscreen(!fs);
   }
   
- allMenGoAway();
+  if (seed!="intro") allMenGoAway();
 }
 
 
