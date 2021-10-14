@@ -1,18 +1,15 @@
 ////////// NudemeNFT 2021
 ////////// By Francis Lam
-console.log("-----  Nudemeniverse by Francis Lam 2021 ----");
-
+console.log("-----  NudemeNFT by Francis Lam 2021 ----");
 const isDebug=0;
 
 let seed=document.URL.split('=')[1];
 if (!seed) { 
-   seed="191097049150619284230721179407439214876258073820827529287310058322124970369093";
-
   if (!isDebug && !htmlSeed.length) document.getElementById("intro").style.display = "block";
+  seed="0";
 }
 
 console.log("seed:"+seed+" length:"+seed.length+" htmlSeed:"+htmlSeed);
-  
 ////// METADATA (0-1) * max + min
 let artID;
 let laziness;  //can't >=1.0. //0.995 = barely visible
@@ -23,7 +20,7 @@ let spacing;
 let unanimity; 
 
 /////
-const totalArt=120;
+const totalArt=111;
 const manWidth=50; 
 const offset=0.0;
 const offsetMax=manWidth*0.3;
@@ -45,50 +42,105 @@ let poseIsLoop=[true,true,true,true,false,false,false,true,true,true];
 
 let lazyRatio;
 
+let fsBut;
+
 function initMetadata(){
-  //digit 1 to 4 -> totalMen
-  //men=1+int(seed.substring(1,4));
-  //console.log(totalMen);
+    let attrA=seed.substring(1,11);
+    let attrD=seed.substring(11,21);
+    let attrU=seed.substring(21,31);
+    let attrL=seed.substring(31,41);
+    let attrT=seed.substring(41,51);
+    let attrS=seed.substring(51,61);
+    let attrP=seed.substring(61,71);
+   
+    let num;
 
-    if (artID==undefined) artID=78; //only init once
-    laziness=0.5* 0.995;  //can't >=1.0. //0.995 = barely visible
-    time=1.0 * 0.01 + 0.001;
-    if (defaultPose==undefined) defaultPose=4;  // walkL_0 walkR_1 runL_2 runR_3 sit_4 standup_5 standStill_6 tapFoot_7 jump_8 dance_9
-    if (isDark==undefined) isDark=0;
-    spacing=0.3 * 0.5 + 0.2;
-    if (unanimity==undefined) unanimity=1.0; 
+    num = int(attrA); if (isNaN(num)) { init404(); return;}
+    if (num>1000000000) attrA= (num%90).toString();
+    else attrA= (90+num%21).toString();
 
+    num = int(attrD); if (isNaN(num)) { init404(); return;}
+    if (num>1000000000) attrD="0";
+    else attrD="1";
+     
+    num = int(attrU); if (isNaN(num)) { init404(); return;}
+    if (num>5000000000) attrU= "0";
+    else attrU= (1+num%100).toString();
+    
+    num = int(attrL); if (isNaN(num)) { init404(); return;}
+    if (num>5000000000) attrL= "100";
+    else attrL= (num%100).toString();
+     
+    num = int(attrT); if (isNaN(num)) { init404(); return;}
+    attrT= (num%10001).toString();
+
+    num = int(attrS); if (isNaN(num)) { init404(); return;}
+    if (num>5000000000) attrS= "100";
+    else attrS= (num%100).toString();
+    
+    num = int(attrP); if (isNaN(num)) { init404(); return;}
+    if (num>5000000000) attrP= "4";
+    else attrP= (5+num%5).toString();
+    
+    console.log("attr A: "+attrA);
+    console.log("attr D: "+attrD);
+    console.log("attr U: "+attrU);
+    console.log("attr L: "+attrL);
+    console.log("attr T: "+attrT);
+    console.log("attr S: "+attrS);
+    console.log("attr P: "+attrP);
+
+    artID=attrA;
+    // walkL_0 walkR_1 runL_2 runR_3 sit_4 standup_5 standStill_6 tapFoot_7 jump_8 dance_9
+    isDark=int(attrD); //D
+    unanimity=int(attrU) / 100.0; //U
+    laziness=int(attrL) / 100.0 * 0.995;  //L can't >=1.0. //0.995 = barely visible
+    time=int(attrT) / 10000.0 * 0.01 + 0.001; //T
+    spacing=int(attrS) / 100.0 * 0.5 + 0.2; //S
+
+ 
+
+    defaultPose=int(attrP);  //P
+
+    ///related vars
     lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
-
-    bgColor=isDark?30:240;
+    updateBg();
 
 }
 
-function preload(){
-  console.log("Start preload frames");
-  preloadFrames();
-  console.log("End preload frames");
-}
-
-function imgYes(){   
-
-   console.log("loaded art: "+artID);
-   initMetadata();
-   createMen();
-}
-
-function load404(){
-  initMetadata();
+function init404(){
+  artID="404"
   laziness=0.01;
   spacing=0.3;
   defaultPose=4;
   time=0.01;
   isDark=0;
-  loadArt("404",createMen); 
+  ///related vars
+  lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
+  updateBg();
+}
+
+function updateBg(){
+  bgColor=isDark?40:240;
+}
+
+function preload(){
+  preloadFrames();
+
+  
+  fsBut = loadImage("lib/fs.png");
+}
+
+
+
+function load404(){
+ 
+  init404();
+  loadArt(artID,createMen); 
 }
 
 function loadArt(id,fYes,fNo){
-  console.log("loading art: "+id);
+  //console.log("loading art: "+id);
   img = loadImage("lib/art/"+id+".png",fYes,fNo);
 }
 
@@ -122,10 +174,10 @@ function createMen()
   //remove 
   let totalM=men.length;
   for (let i=0; i<totalM; i++) men.pop();
-  console.log("total men before:"+men.length);
+  //console.log("total men before:"+men.length);
 
 
-   console.log("Art: "+artID);
+   //console.log("Art: "+artID);
   ///create nudemen from the image
    let m=0;
    let maxX=0, minX=10000, maxY=0, minY=10000;
@@ -179,7 +231,7 @@ function createMen()
    } // end if img!=null
    imgW=maxX-minX+1;
    imgH=maxY-minY+1;
-   console.log("total men:"+men.length+" new imgW:"+imgW+" new imgH:"+imgH+"-------------");
+   console.log("total men:"+men.length+"-------------");
   
   
   
@@ -194,7 +246,7 @@ function setup() {
   initMetadata(seed);
   
   if (htmlSeed=="404") load404();
-  else loadArt(artID,imgYes,load404);
+  else loadArt(artID,createMen,load404);
 
   applyColorTone();
   createCanvas(windowWidth, windowHeight);
@@ -210,7 +262,9 @@ function setup() {
 function draw() {
   background(bgColor); 
   for (let i = 0; i < men.length; i++) men[i].display();
-  rect(width-40-10, 10, 40, 40); //fs button  
+  
+  if (!fullscreen()) image(fsBut,width-25, 25); //fs button  
+  
 }
 
 
@@ -460,6 +514,7 @@ function mousePressed() {
     let fs = fullscreen();
     fullscreen(!fs);
   }
+  
  allMenGoAway();
 }
 
@@ -471,26 +526,28 @@ function keyPressed() {
       if (keyCode === RIGHT_ARROW) {
         if (artID>=totalArt-1) artID=0;
         else artID++;
-        loadArt(artID,imgYes,load404);  
+        loadArt(artID,createMen,load404);  
         
       } else if (keyCode === LEFT_ARROW) {
         if (artID<=0) artID=totalArt-1;
         else artID--;
-        loadArt(artID,imgYes,load404);  
+        loadArt(artID,createMen,load404);  
       } else if (keyCode === 32) {
 
         if (isDark) isDark=0;
         else isDark=1;
 
-        loadArt(artID,imgYes,load404);  
+        updateBg();
+
+        loadArt(artID,createMen,load404);  
       } else if (keyCode === UP_ARROW) {
         defaultPose++;
         if (defaultPose>9) defaultPose=4;
-        loadArt(artID,imgYes,load404);  
+        loadArt(artID,createMen,load404);  
       } else if (keyCode === DOWN_ARROW) {
         defaultPose--;
         if (defaultPose<4) defaultPose=9;
-        loadArt(artID,imgYes,load404);  
+        loadArt(artID,createMen,load404);  
       }
   
 }
@@ -645,18 +702,3 @@ loadImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAABQCAYAAABbAybgAAA
 }
 
 
-
-
-
-  
-/*
-  //walkR
-  frames = [
-loadImage("data:image/png;base64,"),
-loadImage("data:image/png;base64,"),
-loadImage("data:image/png;base64,"),
-loadImage("data:image/png;base64,"),
-loadImage("data:image/png;base64,")
-];
-  poseImage.push(frames);
-*/
