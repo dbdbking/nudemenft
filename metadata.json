@@ -1,0 +1,8 @@
+{
+  "name": "NudemeNFT",
+  "description": "xxxx",
+  "image": "https://nudemenft.com/graphics/image.png",
+  "external_link": "https://nudemenft.com",
+  "seller_fee_basis_points": 250, # Indicates a 2.5% seller fee.
+  "fee_recipient": "0x45E98281D5384FE95697F8894fAfECeef639cc1a"
+}
