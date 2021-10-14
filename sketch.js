@@ -279,7 +279,7 @@ function draw() {
   background(bgColor); 
   for (let i = 0; i < men.length; i++) men[i].display();
   
-  if (!fullscreen()) image(fsBut,width-25, 25); //fs button  
+  if (!fullscreen() && seed!="intro") image(fsBut,width-25, 25); //fs button  
 
   
   
