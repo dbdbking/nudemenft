@@ -361,12 +361,17 @@ class Nudeman {
     
   }
 
-  goRandomPos(rightNow){
+  goRandomPos(rightNow,isM){
     this.isArrived=false;
     let extraX=0;
     let extraY=0;
     let x=int(random(width+extraX) - extraX/2.0);
     let y=int(random(height+extraY) - extraY/2.0);
+
+    if (isM) {
+       x=int(random(width/2.0) - width/4.0 +mouseX);
+       y=int(random(height/2.0) - height/4.0 +mouseY);
+    }
 
     if (rightNow) { 
       this.x=this.toX=x;
@@ -529,7 +534,7 @@ function mousePressed() {
     fullscreen(!fs);
   }
   
-  if (seed!="intro" || isDebug) allMenGoAway();
+  if (seed!="intro" || isDebug) allMenGoAway(false,true);
 }
 
 
@@ -582,9 +587,9 @@ function allMenGotoWork(rn){
   }
 }
 
-function allMenGoAway(rn){
+function allMenGoAway(rn,isMouse){
   for (let i = 0; i < men.length; i++) 
-    men[i].goRandomPos(rn);
+    men[i].goRandomPos(rn,isMouse);
 }
 
 //////////// frames....
