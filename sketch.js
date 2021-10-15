@@ -109,7 +109,7 @@ function initMetadata(){
 
 function init404(){
   artID="404"
-  laziness=0.01;
+  laziness=0.03;
   spacing=0.3;
   defaultPose=4;
   time=0.01;
