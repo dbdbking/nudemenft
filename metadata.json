@@ -1,7 +1,7 @@
 {
   "name": "NudemeNFT",
-  "description": "xxxx",
-  "image": "https://nudemenft.com/graphics/image.png",
+  "description": "The NudemeNFT is a collection of 9,999 unique interactive arts living on the Ethereum blockchain. Each artwork (NFT) is made up of 1 to 2,500 programmed Nudemen, relentlessly forming a pattern, an art or a message chosen from over 120 curated visuals.",
+  "image": "https://nudemenft.com/graphics/banner600x400.png",
   "external_link": "https://nudemenft.com",
   "seller_fee_basis_points": 250,
   "fee_recipient": "0x45E98281D5384FE95697F8894fAfECeef639cc1a"
