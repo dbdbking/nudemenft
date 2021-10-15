@@ -1,7 +1,7 @@
 ////////// NudemeNFT 2021
 ////////// By Francis Lam
 console.log("-----  NudemeNFT by Francis Lam 2021 ----");
-let isDebug=1;
+let isDebug=0;
 
 let seed=document.URL.split('?s=')[1];
 if (!seed) { 
