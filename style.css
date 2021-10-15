@@ -34,14 +34,14 @@ a:hover, a:active {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
   font-weight: 300;
   font-size:50px;
-  line-height: 40px;
+  line-height: 35px;
 }
 
 .center {
   margin: 0;
   position: absolute;
   top: 50%;
- 0t: 50%;
+  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -55,11 +55,12 @@ a:hover, a:active {
 
 }
 
-
-
 .name {
   font-size:20px;
 }
 .soon {
   font-size:16px;
+}
+.footer {
+  font-size:14px;
 }
