@@ -63,22 +63,21 @@ function initMetadata(){
     else attrD="1";
      
     num = int(attrU); if (isNaN(num)) { init404(); return;}
-    if (num>5000000000) attrU= "0";
-    else attrU= (1+num%100).toString();
+    attrU= (num%101).toString();
     
     num = int(attrL); if (isNaN(num)) { init404(); return;}
-    if (num>5000000000) attrL= "100";
+    if (num>7000000000) attrL= "100";
     else attrL= (num%100).toString();
      
     num = int(attrT); if (isNaN(num)) { init404(); return;}
     attrT= (num%10001).toString();
 
     num = int(attrS); if (isNaN(num)) { init404(); return;}
-    if (num>5000000000) attrS= "100";
+    if (num>7000000000) attrS= "100";
     else attrS= (num%100).toString();
     
     num = int(attrP); if (isNaN(num)) { init404(); return;}
-    if (num>5000000000) attrP= "4";
+    if (num>7000000000) attrP= "4";
     else attrP= (5+num%5).toString();
     
     console.log("attr A: "+attrA);
@@ -386,11 +385,11 @@ class Nudeman {
     
     this.isArrived=false;
     
-    let x=0-random(width);
-    let y=0-random(height);
+    let x=0-random(width/2.0);
+    let y=0-random(height/2.0);
     
-    if (random(1.0)>0.5) x=width+random(width);
-    if (random(1.0)>0.5) y=height+random(height);
+    if (random(1.0)>0.5) x=width+random(width/2.0);
+    if (random(1.0)>0.5) y=height+random(height/2.0);
 
     x=int(x);
     y=int(y);
