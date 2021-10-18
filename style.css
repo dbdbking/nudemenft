@@ -76,6 +76,7 @@ a:hover, a:active {
 
 .footer {
   font-size:0.8rem;
+  line-height: 0rem;
 }
 
 
@@ -99,7 +100,7 @@ a:hover, a:active {
   border: none;
   margin: none;
   color: white;
-  width:90%;
+  width:95%;
   padding: 1.0rem;
   text-align: center;
   text-decoration: none;
