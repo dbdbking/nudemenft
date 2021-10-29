@@ -659,8 +659,8 @@ class Nudeman {
     this.isArrived=false;
     this.toX = x;
     this.toY = y;
-    this.speedX = (this.toX-this.x)*(this.power+this.isWorker*0.04);
-    this.speedY = (this.toY-this.y)*(this.power+this.isWorker*0.04);
+    this.speedX = (this.toX-this.x)*(this.power+this.isWorker*0.02);
+    this.speedY = (this.toY-this.y)*(this.power+this.isWorker*0.02);
 
     let sign;
     sign=(this.speedX>0)?1:-1;
