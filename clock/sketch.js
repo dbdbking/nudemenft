@@ -43,6 +43,22 @@ let lazyRatio;
 
 let fsBut;
 let seconds, hours,minutes;
+let styles=[0,1,2,3,4];  // dial, num, s,m,h  (0-3 tones, 4=random)
+
+function getToneFrom(style){ //input 0-99
+
+
+  let baseTone=style%totalTones;
+  if (style<10) return(baseTone);
+  else {
+
+    if (random(100)>style) return(baseTone);
+    else return(Math.floor(random(totalTones)));
+  }
+
+
+
+}
 
 function initMetadata(){
     let attrA=seed.substring(1,11);
@@ -55,8 +71,7 @@ function initMetadata(){
    
     let num;
     num = int(attrA); if (isNaN(num)) { init404(); return;}
-    if (num>1000000000) attrA= (num%102).toString();
-    else attrA= (102+num%18).toString();
+
 
     num = int(attrD); if (isNaN(num)) { init404(); return;}
     if (num>1000000000) attrD="0";
@@ -95,10 +110,13 @@ function initMetadata(){
     laziness=int(attrL) / 100.0 * 0.995;  //L can't >=1.0. //0.995 = barely visible
     time=int(attrT) / 10000.0 * 0.01 + 0.001; //T
     spacing=int(attrS) / 100.0 * 0.5 + 0.2; //S
-
- 
-
     defaultPose=int(attrP);  //P
+    styles[0]=attrA.substring(0,2);
+    styles[1]=attrA.substring(2,4);
+    styles[2]=attrA.substring(4,6);
+    styles[3]=attrA.substring(6,8);
+    styles[4]=attrA.substring(8,10);
+
 
     ///related vars
     lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
@@ -114,7 +132,7 @@ function init404(){
   spacing=1.0;
   defaultPose=4;
   time=0.99 * 0.01 + 0.001;
-  unanimity=1.0    +0.5   ;  //adjust for clock
+  unanimity=0.5    +0.5   ;  //adjust for clock
   isDark=1;
   ///related vars
   lazyRatio=laziness*laziness*0.3; //for allMenGotoWOrk (bigger=unclear)
@@ -176,11 +194,21 @@ function createClock(){
 
   console.log("Creating Digital Clock...");
   let m=0;
+  let digitID;
+  let style;
   //// create dial + markings ----------------------------
   for (let i = 0; i < totalDigits; i++) { 
+
+      digitID=Math.floor(i/digW/digW);
+      if (digitID==0 || digitID==1) style=styles[4]; //h
+      else if (digitID==3 || digitID==4) style=styles[3]; //m
+      else if (digitID==6 || digitID==7) style=styles[2]; //s
+      else if (digitID==2) style=styles[0]; //first :
+      else if (digitID==5) style=styles[1]; //second :
+
       let t=2; ///t: 0=white 1=yellow 2=brown 3=black
       men.push(new Nudeman(m)); 
-      men[m].t=t;
+      men[m].t=getToneFrom(style);
       men[m].goAway(true);
       let pos=getAwayPos();
       men[m].workX=int(pos.x);
@@ -287,8 +315,7 @@ function initClock(){
                     men[m].workX=int(pos.x);
                     men[m].workY=int(pos.y);
                   }
-                 // men[m].workX=men[m].awayX;
-                 // men[m].workY=men[m].awayY;
+                
               }
             } 
             men[m].isWorker=isWorker;
@@ -321,10 +348,12 @@ function createAnalogClock()
   let m=0;
   //// create dial + markings ----------------------------
   for (let i = 0; i < totalDial+totalMark; i++) { 
-      let t=0; ///t: 0=white 1=yellow 2=brown 3=black
+      ///t: 0=white 1=yellow 2=brown 3=black
       if (i>=totalDial) t=2;
       men.push(new Nudeman(m)); 
-      men[m].t=t;
+
+      men[m].t=i<totalDial?getToneFrom(styles[0]):getToneFrom(styles[1]); 
+     
       men[m].goAway(true);
       m++;          
   } //end for loop
@@ -347,11 +376,11 @@ function createAnalogClock()
             else if (b<0) b=0;
             if (b==0) {
               if (m<maxMen) {
-                let t=2; ///t: 0=white 1=yellow 2=brown 3=black
+                 ///t: 0=white 1=yellow 2=brown 3=black
                 men.push(new Nudeman(m)); 
                 men[m].numX=i;
                 men[m].numY=j;
-                men[m].t=t;
+                men[m].t=getToneFrom(styles[1]); //num
                 men[m].goAway(true);
                 m++;
                 temp++;
@@ -365,11 +394,11 @@ function createAnalogClock()
 
   //// create hands ----------------------------
   totalHandH=int(totalDial/2/PI *0.7);
-  m=createHand(totalHandH,true,m,2);
+  m=createHand(totalHandH,true,m,4);
   totalHandM=int(totalDial/2/PI);
   m=createHand(totalHandM,true,m,3);
   totalHandS=int(totalDial/2/PI);
-  m=createHand(totalHandS,true,m,0);
+  m=createHand(totalHandS,true,m,2);
 
   initAnalogClock();
 
@@ -381,11 +410,11 @@ function createAnalogClock()
 }
 
 
-function createHand(totalHand,isWorker,id,t){
+function createHand(totalHand,isWorker,id,styleID){
     for (let i = 0; i < totalHand; i++) { 
       ///t: 0=white 1=yellow 2=brown 3=black
       men.push(new Nudeman(id)); 
-      men[id].t=t;
+      men[id].t=getToneFrom(styles[styleID]);
       if (isWorker) men[id].isWorker=true; ///worker tag
 
     
@@ -620,9 +649,6 @@ class Nudeman {
     this.t = 0;
     this.isArrived=false;
     this.isWorker=false;
-    let tempPos=getAwayPos();
-    this.awayX=tempPos.x;
-    this.awayY=tempPos.y;
   }
 
   isAway(){
@@ -655,7 +681,8 @@ class Nudeman {
         //console.log("startX:"+startX+" starty:"+startY);
         
        if (dist(this.x,this.y,toX,toY)>ev*2*2) { //not at work
-          if (this.pose==4 && !rightNow) this.setPose(5);   // standup
+        
+          if (this.pose==4 && !rightNow ) this.setPose(5);   // standup
           else 
            {
               this.isArrived=false;
