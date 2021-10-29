@@ -1,7 +1,7 @@
 ////////// NudemeNFT 2021
 ////////// By Francis Lam
 console.log("-----  NudemeNFT by Francis Lam 2021 ----");
-let isDebug=0;
+let isDebug=1;
 
 let seed=document.URL.split('?s=')[1];
 if (!seed) { 
@@ -59,9 +59,11 @@ function getToneFrom(style){ //input 0-99
 
 
 }
-
+let styleSeed;
+let clockU=0.5; //more unified
+let clockL=0.4; //work harder
 function initMetadata(){
-    let attrA=seed.substring(1,11);
+    let attrA=styleSeed=seed.substring(1,11);
     let attrD=seed.substring(11,21);
     let attrU=seed.substring(21,31);
     let attrL=seed.substring(31,41);
@@ -71,7 +73,8 @@ function initMetadata(){
    
     let num;
     num = int(attrA); if (isNaN(num)) { init404(); return;}
-
+    if (num>1000000000) attrA= (num%102).toString();
+    else attrA= (102+num%18).toString();
 
     num = int(attrD); if (isNaN(num)) { init404(); return;}
     if (num>1000000000) attrD="0";
@@ -106,16 +109,16 @@ function initMetadata(){
     artID=int(attrA);
     // walkL_0 walkR_1 runL_2 runR_3 sit_4 standup_5 standStill_6 tapFoot_7 jump_8 dance_9
     isDark=int(attrD); //D
-    unanimity=int(attrU) / 100.0; //U
-    laziness=int(attrL) / 100.0 * 0.995;  //L can't >=1.0. //0.995 = barely visible
+    unanimity=int(attrU) / 100.0    +clockU; //U
+    laziness=int(attrL) / 100.0 * 0.995    *clockL;  //L can't >=1.0. //0.995 = barely visible
     time=int(attrT) / 10000.0 * 0.01 + 0.001; //T
     spacing=int(attrS) / 100.0 * 0.5 + 0.2; //S
     defaultPose=int(attrP);  //P
-    styles[0]=attrA.substring(0,2);
-    styles[1]=attrA.substring(2,4);
-    styles[2]=attrA.substring(4,6);
-    styles[3]=attrA.substring(6,8);
-    styles[4]=attrA.substring(8,10);
+    styles[0]=int(styleSeed.substring(0,2));
+    styles[1]=int(styleSeed.substring(2,4));
+    styles[2]=int(styleSeed.substring(4,6));
+    styles[3]=int(styleSeed.substring(6,8));
+    styles[4]=int(styleSeed.substring(8,10));
 
 
     ///related vars
@@ -440,7 +443,8 @@ function initAnalogClock(){
   shortSide*=(0.8 + 0.2*spacing); //smallest 0.8 biggest*1.0
   
   //dial -------------------------
-  total=int(shortSide*0.1);
+  if (artID==92 || artID==90) total=0; //rare
+  else total=int(shortSide*0.1);
 
   if (total>totalDial) total=totalDial;
 
@@ -462,7 +466,6 @@ function initAnalogClock(){
 
   for (let i=total; i<totalDial; i++){
 
-
       manID=i;
       if (!men[manID].isAway()){
         let pos=getAwayPos();
@@ -479,7 +482,7 @@ function initAnalogClock(){
   for (let i = 0; i < total; i++) { 
     manID=i+totalDial;
 
-    if (sep<manWidth*0.25 && sep>manWidth*0.1){
+    if (sep<manWidth*0.25 && sep>manWidth*0.1 && artID!=92 && artID!=91 ){ //rare 
         if (i<=total/2) {
           men[manID].workX=int(cx+markR*cos( (TWO_PI  / total * i) - TWO_PI*0.25));
           men[manID].workY=int(cy+markR*sin( (TWO_PI  / total * i) - TWO_PI*0.25));
@@ -510,7 +513,7 @@ function initAnalogClock(){
     for (let j=0; j<totalNum[i]; j++){
       manID=numCount+totalDial+totalMark;
 
-      if (sep<manWidth*0.25){
+      if (sep<manWidth*0.25 || artID==92 || artID==91){ //rare 
         if (!men[manID].isAway()){
             let pos=getAwayPos();
             men[manID].workX=int(pos.x);
