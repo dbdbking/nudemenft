@@ -35,7 +35,7 @@ a:hover, a:active {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
   font-weight: 300;
   font-size:3.0rem;
-  line-height: 3rem;
+  line-height: 2rem;
 }
 
 .center {
@@ -114,7 +114,6 @@ a:hover, a:active {
 
 }
 
-
 .logo {
   display: inline-block;
   width: 3rem;
@@ -147,14 +146,3 @@ a:hover, a:active {
   background: url(./graphics/check.svg);
   background-size: 1.2rem 1.2rem;
 }
-
-
-
-
-
-
-
-
-
-
-
