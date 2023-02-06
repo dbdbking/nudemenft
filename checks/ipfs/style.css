@@ -1,0 +1,148 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  zoom: reset;
+  font-size: 100%;
+
+}
+canvas {
+  position: fixed; 
+  display: block;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+a:link, a:visited {
+  color:black;
+  text-decoration: underline;
+}
+
+a:hover, a:active {
+  color:black;
+  text-decoration:none;
+}
+
+.overlay{
+  display:none;
+  z-index:10;
+  position: absolute;
+  width:80%;
+  max-width:40rem;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  font-weight: 300;
+  font-size:3.0rem;
+  line-height: 2rem;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+}
+
+.name {
+  font-size:1.3rem;
+}
+.soon {
+  font-size:1rem;
+  margin-bottom: 5.0em;
+
+}
+
+
+.subhead {
+  text-transform: uppercase;
+  font-size:1.4rem;
+  font-weight: bold;
+  line-height: 1.0rem;
+  margin-bottom: 2.0em;
+}
+
+.footer {
+  font-size:0.8rem;
+  line-height: 0rem;
+}
+
+
+.button:hover, .logo:hover {
+    opacity: 0.7;
+}
+
+.button:link, .button:visited {
+  color:white;
+  text-decoration: none;
+}
+
+.button:hover, .button:active {
+  color:white;
+  text-decoration:none;
+}
+
+
+.button {
+  background-color: black;
+  border: none;
+  margin: none;
+  color: white;
+  width:95%;
+  padding: 1.0rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  border-radius: 12px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+
+
+}
+
+.logo {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin: 0rem 1.2rem;
+}
+
+.opensea {
+  background: url(./graphics/opensea.svg);
+  background-size: 3rem 3rem;
+} 
+
+.twitter {
+  background: url(./graphics/twitter.svg);
+  background-size: 3rem 3rem;
+}
+
+.email {
+  background: url(./graphics/email.svg);
+  background-size: 3rem 3rem;
+}
+
+.check {
+    display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  margin: 0rem 0.5rem;
+  background: url(./graphics/check.svg);
+  background-size: 1.2rem 1.2rem;
+}

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-// Nudemen Checks 
-// K10
+// Nudemen Checks by NudemeNFT
+// K10.WTF
 
-pragma solidity 0.8.0;
+pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -12,12 +12,12 @@ contract NUDEMENFT {
      function walletOfOwner(address _owner) public view returns (uint256[] memory) {}
 }
 
-contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
+contract NUDEMENCHECKS is ERC721, Ownable {
   using Strings for uint256;
   using Counters for Counters.Counter;
   string public baseURI="https://nudemenft.com/checks";
-  string public baseAniURI = "ipfs://QmRZdvzxow4BHEJGkXnCWYttStsMK6AWzDJ4cLB2Ggg7Uh";  //update
-  uint256 public cost = 0.05 ether;
+  string public baseAniURI = "ipfs://QmY7o8SAhUeEjPAqmWM1dT74m7ZkEYvEdzVqAJMqqZRRzu";  //update
+  uint256 public cost = 100 ether;
   uint256 public maxSupply = 999;
   uint256 public maxMintPerTx = 10;
   bool public paused = true;
@@ -28,12 +28,12 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
   
   constructor() ERC721("NUDEMENCHECKS", "NUDECKS") {
     privateMint(10,msg.sender);
-    nmnft = NUDEMENFT(0x32A5C961ed3b41F512952C5Bb824B292B4444dD6); //update
+    nmnft = NUDEMENFT(0x32A5C961ed3b41F512952C5Bb824B292B4444dD6); //update for ETH
   }
   
   function claim(uint256 nudemeNFT_id) public{
       require(!paused,"Minting Paused");
-      require(!claimed[nudemeNFT_id],"Token already claimed");
+      require(claimed[nudemeNFT_id]!=1,"Token already claimed");
       uint256[] memory tids=nmnft.walletOfOwner(msg.sender);
       bool hasToken = false;
     
@@ -49,15 +49,15 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
   }
   
   
-  function mint(uint256 _mintAmount) public payable{
+  function mint() public payable{
     require(!paused,"Mint Paused");
-    require(msg.value >= cost * _mintAmount,"Insufficient fund");
-    _mintCore(msg.sender,_mintAmount);
+    require(msg.value >= cost,"Insufficient fund");
+    _mintCore(msg.sender,1);
 
   }
 
- function check(uint256 nudemeNFT_id) public {
-    return(claimed[nudemeNFT_id]);
+ function check(uint256 nudemeNFT_id) public view returns(string memory){
+    return(claimed[nudemeNFT_id].toString());
  } 
   
 
@@ -81,27 +81,49 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
   }
 
 
+
+
   function walletOfOwner(address _owner) public view returns (uint256[] memory)
   {
     uint256 ownerTokenCount = balanceOf(_owner);
-    uint256[] memory tokenIds = new uint256[](ownerTokenCount);
-    for (uint256 i; i < ownerTokenCount; i++) {
-      tokenIds[i] = tokenOfOwnerByIndex(_owner, i);
+    uint256[] memory ownedTokenIds = new uint256[](ownerTokenCount);
+    uint256 currentTokenId = 1;
+    uint256 ownedTokenIndex = 0;
+
+    while (ownedTokenIndex < ownerTokenCount && currentTokenId <= maxSupply) {
+      address currentTokenOwner = ownerOf(currentTokenId);
+
+      if (currentTokenOwner == _owner) {
+        ownedTokenIds[ownedTokenIndex] = currentTokenId;
+        ownedTokenIndex++;
+      }
+      currentTokenId++;
     }
-    return tokenIds;
+    return ownedTokenIds;
   }
-  
-  function walletDetailsOfOwner(address _owner) public view returns (uint256[] memory, uint256[] memory)
+
+ function walletDetailsOfOwner(address _owner) public view returns (uint256[] memory,uint256[] memory)
   {
     uint256 ownerTokenCount = balanceOf(_owner);
-    uint256[] memory tokenIds = new uint256[](ownerTokenCount);
+    uint256[] memory ownedTokenIds = new uint256[](ownerTokenCount);
+    uint256 currentTokenId = 1;
+    uint256 ownedTokenIndex = 0;
     uint256[] memory s = new uint256[](ownerTokenCount);
-    for (uint256 i; i < ownerTokenCount; i++) {
-      tokenIds[i] = tokenOfOwnerByIndex(_owner, i);
-      s[i] = seeds[tokenIds[i]];
+
+    while (ownedTokenIndex < ownerTokenCount && currentTokenId <= maxSupply) {
+      address currentTokenOwner = ownerOf(currentTokenId);
+
+      if (currentTokenOwner == _owner) {
+        ownedTokenIds[ownedTokenIndex] = currentTokenId;
+        s[ownedTokenIndex] = seeds[ownedTokenIds[ownedTokenIndex]];
+        ownedTokenIndex++;
+      }
+      currentTokenId++;
     }
-    return (tokenIds, s);
+    return (ownedTokenIds,s);
   }
+
+ 
   
   function contractURI() public view returns (string memory) {
         return string(abi.encodePacked(baseURI, "/metadata.json"));
@@ -184,7 +206,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
         string memory extURL = string(abi.encodePacked('"external_url":"',baseURI,'/?s=',seed.toString(),'",'));
         string memory aniURL = string(abi.encodePacked('"animation_url":"',baseURI,'/?s=',seed.toString(),'",'));
         string memory imgURL = string(abi.encodePacked('"image":"',baseURI,'/img/',tid.toString(),'.png"'));
-        string memory name =string(abi.encodePacked('"name":"Nudemen #',tid.toString()));
+        string memory name =string(abi.encodePacked('"name":"Nudemen Checks #',tid.toString()));
 
         uint256 num;
 
@@ -226,7 +248,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
                             attrD,'"},{"trait_type":"Uniformity","value":',
                             attrU,'},{"trait_type":"Laziness","value":',
                             attrL,'},{"trait_type":"Timing","value":',
-                            attrT,'},{"trait_type":"Spacing","value":",
+                            attrT,'},{"trait_type":"Spacing","value":',
                             attrS,'},{"trait_type":"Posture","value":"',
                             attrP,'"}],',extURL,aniURL,imgURL,'}'
                             )
