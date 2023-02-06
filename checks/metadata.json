@@ -1,0 +1,8 @@
+{
+  "name": "Nudemen Checks",
+  "description": "Nudemen Checks is an NFT collection of up to 999 unique interactive arts inspired by Jack Butcher's Checks.",
+  "image": "https://nudemenft.com/checks/graphics/placeholder350x350.png",
+  "external_link": "https://nudemenft.com/checks",
+  "seller_fee_basis_points": 500,
+  "fee_recipient": "0x45E98281D5384FE95697F8894fAfECeef639cc1a"
+}

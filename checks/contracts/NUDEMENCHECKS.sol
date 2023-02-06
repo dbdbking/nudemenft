@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Nudemen Checks 
 // K10
- 
+
 pragma solidity 0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -17,7 +17,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
   using Counters for Counters.Counter;
   string public baseURI="https://nudemenft.com/checks";
   string public baseAniURI = "ipfs://QmRZdvzxow4BHEJGkXnCWYttStsMK6AWzDJ4cLB2Ggg7Uh";  //update
-  uint256 public cost = 100.00 ether;
+  uint256 public cost = 0.05 ether;
   uint256 public maxSupply = 999;
   uint256 public maxMintPerTx = 10;
   bool public paused = true;
@@ -31,9 +31,8 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
     nmnft = NUDEMENFT(0x32A5C961ed3b41F512952C5Bb824B292B4444dD6); //update
   }
   
-  function claim(uint256 nudemeNFT_id) public {
+  function claim(uint256 nudemeNFT_id) public{
       require(!paused,"Minting Paused");
-      require(supply.current() + 1 <= maxSupply,"Max NFT supply exceeded");
       require(!claimed[nudemeNFT_id],"Token already claimed");
       uint256[] memory tids=nmnft.walletOfOwner(msg.sender);
       bool hasToken = false;
@@ -50,7 +49,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
   }
   
   
-  function mint(uint256 _mintAmount) public payable mintMod(_mintAmount){
+  function mint(uint256 _mintAmount) public payable{
     require(!paused,"Mint Paused");
     require(msg.value >= cost * _mintAmount,"Insufficient fund");
     _mintCore(msg.sender,_mintAmount);
@@ -62,17 +61,17 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
  } 
   
 
- function privateMint(uint256 _mintAmount, address _receiver) public mintMod(_mintAmount) onlyOwner {
+ function privateMint(uint256 _mintAmount, address _receiver) public onlyOwner {
     _mintCore(_receiver,_mintAmount);
   }
 
   modifier mintMod(uint256 _mintAmount) {
-    require(_mintAmount > 0 && _mintAmount <= maxMintPerTx, "Invalid mint amount");
+    require(_mintAmount > 0 && _mintAmount <= maxMintPerTx, "Mint amount exceeded");
     require(supply.current()+ _mintAmount <= maxSupply,"Max NFT supply exceeded");
     _;
   }
 
- function _mintCore(address _receiver, uint256 _mintAmount) internal {
+ function _mintCore(address _receiver, uint256 _mintAmount) internal mintMod(_mintAmount){
      for (uint256 i = 1; i <= _mintAmount; i++) {
       supply.increment();
       uint256 tid = supply.current();
@@ -82,10 +81,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
   }
 
 
-  function walletOfOwner(address _owner)
-    public
-    view
-    returns (uint256[] memory)
+  function walletOfOwner(address _owner) public view returns (uint256[] memory)
   {
     uint256 ownerTokenCount = balanceOf(_owner);
     uint256[] memory tokenIds = new uint256[](ownerTokenCount);
@@ -95,10 +91,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
     return tokenIds;
   }
   
-  function walletDetailsOfOwner(address _owner)
-    public
-    view
-    returns (uint256[] memory, uint256[] memory)
+  function walletDetailsOfOwner(address _owner) public view returns (uint256[] memory, uint256[] memory)
   {
     uint256 ownerTokenCount = balanceOf(_owner);
     uint256[] memory tokenIds = new uint256[](ownerTokenCount);
@@ -114,12 +107,7 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
         return string(abi.encodePacked(baseURI, "/metadata.json"));
   }
 
-  function tokenURI(uint256 tokenId)
-    public
-    view
-    virtual
-    override
-    returns (string memory)
+  function tokenURI(uint256 tokenId) public view virtual override returns (string memory)
   {
     require(
       _exists(tokenId),
@@ -130,16 +118,12 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
 
   }
   
-  function tokenAniURI(uint256 tokenId)
-    public
-    view
-    returns (string memory)
+  function tokenAniURI(uint256 tokenId) public view returns (string memory)
   {
     require(
       _exists(tokenId),
       "URI query for nonexistent token"
     );
-
     return string(abi.encodePacked(baseAniURI,'/?s=',seeds[tokenId].toString()));
   }
 
@@ -151,8 +135,8 @@ contract NUDEMENCHECKS is ERC721Enumerable, Ownable {
     cost = _newCost;
   }
 
-  function setMaxMintAmount(uint256 _newmaxMintAmount) public onlyOwner() {
-    maxMintAmount = _newmaxMintAmount;
+  function setMaxMintPerTx(uint256 _new) public onlyOwner() {
+    maxMintPerTx = _new;
   }
 
   function setBaseURI(string memory _newBaseURI) public onlyOwner {
