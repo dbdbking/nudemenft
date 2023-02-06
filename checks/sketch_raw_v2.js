@@ -61,30 +61,28 @@ function initMetadata(){
 
     num = int(attrD); if (isNaN(num)) { init404(); return;}
     if (num>1000000000) attrD="0";
-    else attrD="1"; //rare
+    else attrD="1"; //rare 10%
      
     num = int(attrU); if (isNaN(num)) { init404(); return;}
     attrU= (num%101).toString();
     
     num = int(attrL); if (isNaN(num)) { init404(); return;}
-    if (num>7000000000) attrL= "100";
-    else attrL= (num%100).toString(); //rare
+    if (num>7000000000) attrL= "100"; //mostly 30%
+    else attrL= (num%100).toString(); 
      
     num = int(attrT); if (isNaN(num)) { init404(); return;}
     attrT= (num%10001).toString();
 
     num = int(attrS); if (isNaN(num)) { init404(); return;}
-    if (num>7000000000) attrS= "100";
-    else attrS= (num%100).toString(); //rare
+    if (num>7000000000) attrS= "100"; //mostly 30%
+    else attrS= (num%100).toString(); 
     
     num = int(attrP); if (isNaN(num)) { init404(); return;}
-    if (num>7000000000) attrP= "4";
-    else attrP= (5+num%5).toString(); //rare
+    if (num>7000000000) attrP= "4";  //mostly 30%
+    else attrP= (5+num%5).toString();
     
 
     //testing
-    
-
 
     console.log("attr A: "+attrA);
     console.log("attr D: "+attrD);
@@ -102,7 +100,7 @@ function initMetadata(){
     unanimity=int(attrU) / 100.0; //U
     laziness=int(attrL) / 100.0 * 0.5;  //L can't >=1.0. //0.995 = barely visible
     time=int(attrT) / 10000.0 * 0.01 + 0.001; //T
-    spacing=int(attrS) / 100.0 * 1.0 + 0.8; //S
+    spacing=int(attrS) / 100.0 * 0.4 + 0.6; //S
 
  
 
@@ -147,7 +145,7 @@ function load404(){
 function loadIntro(){
   artID=1;
   laziness=0.2;
-  spacing=2.3;
+  spacing=2.7;
   defaultPose=4;
   time=0.01;
   unanimity=0.9;
@@ -355,8 +353,8 @@ class Nudeman {
         let maxSep=int(manWidth*spacing);
         if (sepX>maxSep) sepX=sepY=maxSep;
         
-        startX=int(manWidth*0.65+(width-img.width*sepX)/2);
-        startY=int(manWidth*0.4+(height-img.height*sepY)/2);
+        startX=int(manWidth*sepX*0.015+(width-img.width*sepX)/2);
+        startY=int(manWidth*sepY*0.01+(height-img.height*sepY)/2);
 
 
         let ev=offset*offsetMax;
