@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support and privacy information for Tofu Go! 2 by Francis Lam / db-db-db. Get help, restore your Upgrade Pack, and learn how the game handles data.">
+  <meta name="theme-color" content="#f8f1df">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+  <title>Tofu Go! 2 — Support &amp; Privacy</title>
+  <link rel="canonical" href="https://nudemenft.com/tofu-go-2/">
+  <style>
+    :root{--paper:#f8f1df;--white:#fffdf6;--ink:#302a21;--muted:#625a4b;--orange:#a83b18;--line:#d8ccb4;--green:#344e31;--yellow:#f1ce6b}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:var(--orange);text-underline-offset:.2em;text-decoration-thickness:1px}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:5px}
+    .skip{position:absolute;top:-6rem;left:1rem;z-index:5;background:var(--white);padding:.75rem 1rem}
+    .skip:focus{top:1rem}
+    .wrap{width:min(1080px,calc(100% - 3rem));margin-inline:auto}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+    .brand{font-weight:800;letter-spacing:.04em;text-decoration:none;color:var(--ink)}
+    nav{display:flex;gap:1.5rem;flex-wrap:wrap}
+    nav a{font-size:.9rem;font-weight:650;color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;padding:4.5rem 0 3.5rem}
+    .eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin:0 0 1rem}
+    h1,h2,h3{line-height:1.15;letter-spacing:-.035em}
+    h1{font-size:clamp(3.1rem,8vw,6.6rem);margin:0 0 1rem;font-weight:850}
+    .hero p:last-child{max-width:36rem;margin:0;color:var(--muted);font-size:1.15rem}
+    .tofu{position:relative;width:144px;height:144px;background:var(--white);border:6px solid var(--ink);box-shadow:12px 12px 0 var(--yellow);transform:rotate(-5deg);margin:0 1rem 1rem 0}
+    .tofu::before{content:"";position:absolute;width:12px;height:18px;background:var(--ink);top:43px;left:31px;box-shadow:53px 0 0 var(--ink)}
+    .tofu::after{content:"";position:absolute;width:31px;height:12px;border-bottom:6px solid var(--ink);border-left:6px solid var(--ink);border-right:6px solid var(--ink);left:50px;top:78px}
+    .release{display:flex;gap:.75rem;align-items:baseline;padding:1rem 1.25rem;background:#eee7d3;border-left:4px solid var(--green);margin-bottom:3.5rem}
+    .release strong{white-space:nowrap;color:var(--green)}
+    .release span{color:var(--muted);font-size:.95rem}
+    .section{display:grid;grid-template-columns:210px minmax(0,1fr);gap:3rem;padding:0 0 4rem;scroll-margin-top:1.5rem}
+    .section + .section{border-top:1px solid var(--line);padding-top:3.5rem}
+    .section-heading h2{font-size:2rem;margin:0 0 .75rem}
+    .section-heading p{font-size:.9rem;color:var(--muted);margin:0}
+    .content{min-width:0}
+    .contact{padding:1.5rem 1.75rem;background:var(--white);border:1px solid var(--line);box-shadow:5px 5px 0 #e6dcc5;margin-bottom:2rem}
+    .contact h3{margin:0 0 .5rem;font-size:1.4rem}
+    .contact p{margin:.75rem 0}
+    .email{display:inline-block;overflow-wrap:anywhere;font-weight:750;font-size:1.15rem}
+    .small{font-size:.9rem;color:var(--muted)}
+    details{border-bottom:1px solid var(--line);padding:1rem 0}
+    summary{cursor:pointer;font-weight:700;padding-right:.5rem;line-height:1.5}
+    details p{margin:.75rem 0 .25rem;color:var(--muted)}
+    .policy h3{font-size:1.2rem;margin:1.8rem 0 .6rem}
+    .policy h3:first-of-type{margin-top:1.25rem}
+    .policy p{margin:.65rem 0;color:var(--muted)}
+    .policy strong{color:var(--ink)}
+    .policy ul{padding-left:1.25rem;color:var(--muted)}
+    .policy li{padding-left:.25rem;margin:.4rem 0}
+    .policy-meta{font-size:.85rem;border-bottom:1px solid var(--line);padding-bottom:1rem;color:var(--muted)}
+    footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;padding:1.75rem 0 2.5rem;font-size:.85rem;color:var(--muted)}
+    footer p{margin:0}
+    @media(max-width:700px){.wrap{width:calc(100% - 2rem)}.masthead{padding:1rem 0}.hero{gap:1.5rem;padding:3rem 0 2.5rem}.tofu{width:96px;height:96px;border-width:4px;box-shadow:8px 8px 0 var(--yellow);margin-right:.5rem}.tofu::before{width:8px;height:12px;top:28px;left:20px;box-shadow:35px 0 0 var(--ink)}.tofu::after{width:22px;height:9px;border-width:0 4px 4px;left:32px;top:51px}.hero p:last-child{font-size:1rem}.section{grid-template-columns:1fr;gap:1.5rem;padding-bottom:2.5rem}.section + .section{padding-top:2.5rem}.section-heading h2{font-size:1.75rem}.release{display:block;margin-bottom:2.5rem}.release strong{display:block;margin-bottom:.25rem}.contact{padding:1.25rem}footer{display:block}footer p + p{margin-top:.5rem}}
+    @media(max-width:390px){.hero{grid-template-columns:1fr}.tofu{display:none}nav{gap:1rem}.brand{font-size:.9rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{body{background:#fff}.wrap{width:100%}.masthead nav,.tofu,.skip{display:none}.hero{padding:1rem 0}.release{margin-bottom:1rem}.section{display:block;padding-bottom:1rem}.section-heading{margin-bottom:1rem}.contact{box-shadow:none}details{break-inside:avoid}.policy h3{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="masthead">
+      <a class="brand" href="https://nudemenft.com/">db-db-db</a>
+      <nav aria-label="Page navigation"><a href="#support">Support</a><a href="#privacy">Privacy</a></nav>
+    </header>
+    <main id="main">
+      <div class="hero">
+        <div><p class="eyebrow">A little help for your little tofu</p><h1>Tofu Go! 2</h1><p>Support, purchase help, and a clear look at your privacy.<br>Made by Francis Lam / db-db-db.</p></div>
+        <div class="tofu" aria-hidden="true"></div>
+      </div>
+      <div class="release"><strong>Ad-free from version 1.1.</strong><span>This page covers version 1.1 and later. Earlier versions may include advertising.</span></div>
+
+      <section class="section" id="support" aria-labelledby="support-heading">
+        <div class="section-heading"><p class="eyebrow">Need a hand?</p><h2 id="support-heading">Support</h2><p>No developer account or login is needed to play.</p></div>
+        <div class="content">
+          <div class="contact"><h3>Get in touch</h3><a class="email" href="mailto:dbdbking@gmail.com?subject=Tofu%20Go%202%20Support">dbdbking@gmail.com</a><p class="small">For a bug, include your iPhone or iPad model, iOS/iPadOS version, app version, and what happened. A screenshot can help. Please don’t send passwords or payment-card details.</p></div>
+          <details open><summary>How do I restore my Upgrade Pack?</summary><p>Open the game’s <strong>Options</strong> menu and choose <strong>Restore Upgrade</strong>. Use the same Apple Account that made the original purchase. Restoring an existing purchase does not buy it again. If it is not restored, email us with the message shown in the app.</p></details>
+          <details><summary>What does the Upgrade Pack include?</summary><p>The Upgrade Pack provides three tofu and three tofu balls. Existing purchases remain valid. From version 1.1, everyone gets ad-free gameplay, whether or not they own the Upgrade Pack.</p></details>
+          <details><summary>The game closes or something looks wrong.</summary><p>Close and reopen the app, then check the App Store for an available update. If it happens again, tell us what you were doing and which device and app version you use. Avoid deleting the app to troubleshoot, because local game progress may be removed.</p></details>
+          <details><summary>How does Game Center work?</summary><p>Apple Game Center handles leaderboards and achievements. Manage your Game Center account in your device’s Settings. The game has no separate db-db-db login. If a leaderboard or achievement is not updating, include that detail in your support email.</p></details>
+          <details><summary>I have a billing or refund question.</summary><p>Apple handles in-app purchase billing. You can review a transaction or request a refund through <a href="https://reportaproblem.apple.com/">Apple’s Report a Problem service</a>. We cannot access your payment-card details.</p></details>
+        </div>
+      </section>
+
+      <section class="section" id="privacy" aria-labelledby="privacy-heading">
+        <div class="section-heading"><p class="eyebrow">Your game. Your information.</p><h2 id="privacy-heading">Privacy policy</h2><p>For Tofu Go! 2 version 1.1 and later, and this support page.</p></div>
+        <div class="content policy">
+          <div class="policy-meta">Effective and last updated: <time datetime="2026-11-03">November 3, 2026</time><br>Publisher: Francis Lam / db-db-db</div>
+          <h3>1. The short version</h3>
+          <p>Tofu Go! 2 is a single-player game. Version 1.1 and later contain <strong>no advertising, advertising SDKs, analytics SDKs, or cross-app tracking</strong>. The game does not request permission to track you and does not require an account with us. We do not operate a game-data server or player-account database.</p>
+          <p>The game uses Apple’s Game Center and in-app purchase services. Those features exchange information with Apple as described below.</p>
+          <h3>2. Information on your device</h3>
+          <p>The game stores settings, local scores and progress, and whether you own the Upgrade Pack. It uses this information to run the game and remember your preferences and purchase benefits. It does not upload this local information to a server operated by us.</p>
+          <p>Local data remains until it is changed or removed. Deleting the app normally removes its local data. Device backups and Apple-managed purchase or Game Center records may remain separately.</p>
+          <h3>3. Apple Game Center</h3>
+          <p>When Game Center is enabled, the game authenticates through Apple and submits scores and achievements. Your Game Center profile and scores may be visible to other players under Apple’s Game Center settings. We do not maintain a separate player database or send Game Center information to our own server.</p>
+          <p>Apple manages these accounts and records. See <a href="https://www.apple.com/legal/privacy/data/en/game-center/">Game Center &amp; Privacy</a> and use your device’s Game Center settings to manage your account and sharing choices.</p>
+          <h3>4. Purchases</h3>
+          <p>Apple processes the optional Upgrade Pack through StoreKit. The game receives transaction results and stores a local purchase-entitlement flag. We do not receive your payment-card details or send purchase receipts to a developer-operated server.</p>
+          <p>Apple manages purchase records, billing, refunds, and restoration under its own terms and <a href="https://www.apple.com/legal/privacy/">privacy policy</a>. The game is ad-free regardless of purchase status.</p>
+          <h3>5. Support email</h3>
+          <p>If you email <a href="mailto:dbdbking@gmail.com?subject=Tofu%20Go%202%20Privacy">dbdbking@gmail.com</a>, we receive your email address and the message and attachments you choose to send. We use them to answer your request and resolve the issue. Email is handled by our email provider; this is separate from data stored inside the game.</p>
+          <p>We retain support correspondence only as long as needed for your request, related follow-up, and applicable legal obligations. You can ask us to delete your correspondence using the email address above. Please send only information relevant to your request.</p>
+          <h3>6. This website and external links</h3>
+          <p>This page has no analytics scripts, advertising, cookies set by its code, or embedded third-party media. It is hosted on GitHub Pages. GitHub may process technical request information, such as your IP address, browser details, and request time, to provide and protect its hosting service. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s Privacy Statement</a>.</p>
+          <p>Links may open other websites or apps. Those destinations handle information under their own privacy policies. Opening an email link does not send a message until you choose to send it.</p>
+          <h3>7. Sharing and your choices</h3>
+          <p>We do not sell personal information or share game data with advertising or analytics networks. Apple and our email and website providers handle information to provide their respective services. They may process it in countries other than where you live, under their own privacy practices.</p>
+          <p>You can delete local game data by deleting the app, manage Game Center and Apple Account information through Apple, and contact us about support correspondence. Depending on where you live, you may have rights to access, correct, or delete personal information or object to its use. Email us with your request; we can explain what we hold and direct requests about Apple or GitHub records to the relevant provider.</p>
+          <h3>8. Updates and contact</h3>
+          <p>We may update this policy when the app or our information practices change. We will publish the current policy here and revise the date above.</p>
+          <p><strong>Francis Lam / db-db-db</strong><br>Support and privacy: <a href="mailto:dbdbking@gmail.com">dbdbking@gmail.com</a></p>
+        </div>
+      </section>
+    </main>
+    <footer><p>© 2026 Francis Lam / db-db-db · Tofu Go! 2</p><p><a href="#support">Support</a> &nbsp;·&nbsp; <a href="#privacy">Privacy</a> &nbsp;·&nbsp; <a href="https://nudemenft.com/">Main site</a></p></footer>
+  </div>
+</body>
+</html>
