@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support and privacy information for TEGO, the falling-block puzzle game by Francis Lam / db-db-db.">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>TEGO — Support &amp; Privacy</title>
+  <link rel="canonical" href="https://nudemenft.com/tego/">
+  <style>
+    :root{--paper:#f7f7f2;--white:#fff;--ink:#191919;--muted:#595953;--line:#d5d5ce;--tint:#eaeae3}
+    *{box-sizing:border-box}
+    html{scroll-padding-top:1.5rem}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+    a{color:inherit;text-underline-offset:.2em}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:5px}
+    .skip{position:absolute;top:-6rem;left:1rem;z-index:5;background:var(--white);padding:.75rem 1rem}
+    .skip:focus{top:1rem}
+    .wrap{width:min(1000px,calc(100% - 3rem));margin-inline:auto}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+    .brand,.eyebrow{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-weight:700;letter-spacing:.1em}
+    .brand{font-size:.85rem;text-decoration:none}
+    nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+    nav a{font-size:.9rem;padding-block:.4rem}
+    .hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;padding:4.5rem 0 3.5rem}
+    .eyebrow{font-size:.75rem;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+    h1,h2,h3{line-height:1.2;letter-spacing:-.035em}
+    h1{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:clamp(3.8rem,12vw,7rem);margin:0 0 1rem;font-weight:850;letter-spacing:-.075em}
+    .intro{max-width:33rem;margin:0;color:var(--muted);font-size:1.1rem}
+    .mark{width:106px;height:106px;border:25px solid var(--ink);transform:rotate(45deg);margin:1.5rem}
+    .release{padding:1rem 1.25rem;background:var(--tint);border-left:4px solid var(--ink);margin-bottom:3.5rem;font-size:.95rem}
+    .release p{margin:0}
+    .release p + p{margin-top:.3rem;color:var(--muted);font-size:.85rem}
+    .section{display:grid;grid-template-columns:180px minmax(0,1fr);gap:3rem;padding:0 0 3.5rem}
+    .section + .section{border-top:1px solid var(--line);padding-top:3.5rem}
+    .section-heading h2{font-size:1.9rem;margin:0 0 .75rem}
+    .section-heading p{font-size:.9rem;color:var(--muted);margin:0}
+    .section-heading .eyebrow{font-size:.75rem;margin-bottom:.6rem}
+    .content{min-width:0}
+    .contact{padding:1.5rem;background:var(--white);border:1px solid var(--line);margin-bottom:1.5rem}
+    .contact h3{margin:0 0 .6rem;font-size:1.3rem}
+    .contact p{margin:.75rem 0 0}
+    .email{display:inline-block;overflow-wrap:anywhere;font-weight:700;font-size:1.15rem}
+    .small{font-size:.9rem;color:var(--muted)}
+    details{border-bottom:1px solid var(--line);padding:1rem 0}
+    summary{cursor:pointer;font-weight:650;padding-right:.5rem;line-height:1.5}
+    details p{margin:.75rem 0 .25rem;color:var(--muted)}
+    .policy h3{font-size:1.15rem;margin:1.8rem 0 .6rem}
+    .policy h3:first-of-type{margin-top:1.25rem}
+    .policy p{margin:.65rem 0;color:var(--muted)}
+    .policy strong{color:var(--ink)}
+    .policy-meta{font-size:.85rem;border-bottom:1px solid var(--line);padding-bottom:1rem;color:var(--muted)}
+    footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;padding:1.5rem 0 2.5rem;font-size:.85rem;color:var(--muted)}
+    footer p{margin:0}
+    @media(max-width:640px){.wrap{width:calc(100% - 2.5rem)}.masthead{padding:1rem 0}.hero{gap:1.25rem;padding:3rem 0 2.5rem}.intro{font-size:1rem}.mark{width:62px;height:62px;border-width:15px;margin:.9rem}.section{grid-template-columns:1fr;gap:1.5rem;padding-bottom:2.5rem}.section + .section{padding-top:2.5rem}.section-heading h2{font-size:1.75rem}.release{margin-bottom:2.5rem}.contact{padding:1.25rem}footer{flex-direction:column}}
+    @media(max-width:390px){.hero{grid-template-columns:1fr}.mark{display:none}nav{gap:1rem}.brand{font-size:.8rem}}
+    @media print{body{background:#fff}.wrap{width:100%}.masthead nav,.mark,.skip{display:none}.hero{padding:1rem 0}.release{margin-bottom:1rem}.section{display:block;padding-bottom:1rem}.section-heading{margin-bottom:1rem}details{break-inside:avoid}.policy h3{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="masthead" id="top">
+      <a class="brand" href="https://nudemenft.com/">db-db-db</a>
+      <nav aria-label="Page sections"><a href="#support">Support</a><a href="#privacy">Privacy</a></nav>
+    </header>
+    <main id="main">
+      <div class="hero">
+        <div><p class="eyebrow">Support &amp; privacy</p><h1>TEGO</h1><p class="intro">A falling-block puzzle game about placement, capture, and chain reactions.<br>Made by Francis Lam / db-db-db.</p></div>
+        <div class="mark" aria-hidden="true"></div>
+      </div>
+      <div class="release"><p><strong>Ad-free from version 1.1.</strong> TEGO 1.1 and later contain no advertising or tracking SDKs.</p><p>This page covers version 1.1 and later. Earlier releases may include advertising.</p></div>
+
+      <section class="section" id="support" aria-labelledby="support-heading">
+        <div class="section-heading"><p class="eyebrow">01 / Help</p><h2 id="support-heading">Support</h2><p>For gameplay questions, purchase help, and bug reports.</p></div>
+        <div class="content">
+          <div class="contact"><h3>Get in touch</h3><a class="email" href="mailto:dbdbking@gmail.com?subject=TEGO%20Support">dbdbking@gmail.com</a><p class="small">Please include your device model, iOS or iPadOS version, TEGO version, and the steps that led to the problem. A screenshot can help. Please don’t send passwords or payment-card details.</p></div>
+          <details open><summary>How do I move and rotate a piece?</summary><p>Touch or drag across the board to choose a column. Swipe up to rotate the falling piece, or swipe down to drop it faster. You can also use the movement, drop, and rotation controls beneath the board.</p></details>
+          <details><summary>Where can I find the rules?</summary><p>Tap the pause button at the bottom centre of the game. Use the arrow on the right to open the illustrated rules, then the left and right arrows to turn the pages. Tap the bottom-centre button to return to your game.</p></details>
+          <details><summary>What does the Upgrade Pack unlock?</summary><p>The Upgrade Pack unlocks Endless Mode. Existing purchases remain valid. Advertising has been removed for everyone from version 1.1, whether or not you own the Upgrade Pack.</p></details>
+          <details><summary>How do I restore an existing purchase?</summary><p>Pause the game and choose <strong>Restore</strong> on the upgrade or quit menu. Use the same Apple Account that made the purchase. Restoring a purchase does not buy it again. If restoration fails, email us with the message shown in the app.</p></details>
+          <details><summary>The game closes or something looks wrong.</summary><p>Close and reopen TEGO, then check the App Store for an available update. If the problem continues, contact us with your device and app details. Avoid deleting the app as a troubleshooting step, because your saved game and local scores may be removed.</p></details>
+          <details><summary>How do the leaderboards work?</summary><p>TEGO uses Apple Game Center to submit scores and show leaderboards. Manage your Game Center account in your device’s Settings. No separate account with us is needed to play.</p></details>
+          <details><summary>I have a billing or refund question.</summary><p>Apple handles in-app purchase billing. Review a transaction or request a refund through <a href="https://reportaproblem.apple.com/">Apple’s Report a Problem service</a>. We do not receive your payment-card details.</p></details>
+        </div>
+      </section>
+
+      <section class="section" id="privacy" aria-labelledby="privacy-heading">
+        <div class="section-heading"><p class="eyebrow">02 / Your data</p><h2 id="privacy-heading">Privacy policy</h2><p>For TEGO version 1.1 and later, and this support page.</p></div>
+        <div class="content policy">
+          <div class="policy-meta">Effective and last updated: <time datetime="2026-11-03">November 3, 2026</time><br>Publisher: Francis Lam / db-db-db</div>
+          <h3>Information in the game</h3>
+          <p>TEGO version 1.1 and later contain <strong>no advertising, advertising SDKs, analytics SDKs, or cross-app tracking</strong>. It does not require an account with us. We do not operate a game-data server or player-account database.</p>
+          <p>The game uses Apple’s Game Center and in-app purchase services. Those features exchange information with Apple as described below.</p>
+          <h3>Data stored on your device</h3>
+          <p>TEGO saves your local scores, current game, game settings, and whether you own the Upgrade Pack. This information lets you resume play and retain your purchase benefits. It is not uploaded to a server operated by us.</p>
+          <p>Deleting the app normally removes its local data. Device backups, purchase records, and Game Center records may remain separately under your Apple settings and Apple’s policies.</p>
+          <h3>Apple Game Center</h3>
+          <p>When you are signed in to Game Center, TEGO authenticates through Apple and submits scores to its leaderboards. Your Game Center profile and scores may be visible to other players. We do not maintain a separate player database or send Game Center information to our own server.</p>
+          <p>Apple manages Game Center accounts and records. Read <a href="https://www.apple.com/legal/privacy/data/en/game-center/">Game Center &amp; Privacy</a> and use your device’s Game Center settings to manage your account and sharing choices.</p>
+          <h3>In-app purchases</h3>
+          <p>Apple processes the optional Upgrade Pack. The game receives transaction results and stores your purchase entitlement locally. We do not receive payment-card details or send purchase receipts to a developer-operated server.</p>
+          <p>Apple manages purchase records, billing, refunds, and restoration under its terms and <a href="https://www.apple.com/legal/privacy/">privacy policy</a>.</p>
+          <h3>Support email</h3>
+          <p>If you email <a href="mailto:dbdbking@gmail.com?subject=TEGO%20Privacy">dbdbking@gmail.com</a>, we receive your email address, message, and any attachments you choose to send. We use them to answer your request and investigate the issue. Our email provider processes messages to deliver and store this correspondence.</p>
+          <p>Support messages may remain in our email history after your request is resolved. You can request deletion of your correspondence at the same address. Please send only information relevant to your request.</p>
+          <h3>This webpage</h3>
+          <p>This page has no analytics scripts, advertising, cookies set by its code, or external embeds. It is hosted on GitHub Pages. GitHub may process technical request information, including your IP address, to serve and secure the page. Read <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s Privacy Statement</a> for details.</p>
+          <p>External links open services with their own privacy policies. Opening an email link does not send a message until you choose to send it.</p>
+          <h3>Your choices</h3>
+          <p>We do not sell personal information or share game data with advertising or analytics networks. You can remove local game data by deleting the app, manage Apple Account and Game Center information through Apple, and contact us about support correspondence. There is no separate developer-held game account to delete.</p>
+          <h3>Updates and contact</h3>
+          <p>If the app’s information practices change, we will update this page and its effective date. For support or privacy questions, contact <strong>Francis Lam / db-db-db</strong> at <a href="mailto:dbdbking@gmail.com">dbdbking@gmail.com</a>.</p>
+        </div>
+      </section>
+    </main>
+    <footer><p>© 2026 Francis Lam / db-db-db · TEGO</p><p><a href="#top">Back to top ↑</a> &nbsp;·&nbsp; <a href="https://nudemenft.com/">Main site</a></p></footer>
+  </div>
+</body>
+</html>
