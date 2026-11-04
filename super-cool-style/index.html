@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support, purchase help, and privacy information for Super Cool Style, the pixel-art fashion and dress-up app by Francis Lam / db-db-db.">
+  <meta name="theme-color" content="#f8f4f8">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Super Cool Style — Support &amp; Privacy">
+  <meta property="og:description" content="A little help for your pixel-art wardrobe. Support, purchase restoration, photos, sharing, and privacy.">
+  <meta property="og:url" content="https://nudemenft.com/super-cool-style/">
+  <meta property="og:image" content="https://nudemenft.com/super-cool-style/app-icon.png">
+  <meta property="og:image:alt" content="The original Super Cool Style pixel-art logo">
+  <meta name="twitter:card" content="summary">
+  <title>Super Cool Style — Support &amp; Privacy</title>
+  <link rel="canonical" href="https://nudemenft.com/super-cool-style/">
+  <link rel="icon" href="app-icon.png" type="image/png">
+  <style>
+    :root{--paper:#f8f4f8;--white:#fff;--ink:#241d2b;--muted:#625b66;--pink:#a50075;--blue:#076c95;--line:#dcd2dd;--tint:#efe3f0}
+    *{box-sizing:border-box}
+    html{scroll-padding-top:1.5rem}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+    a{color:var(--pink);text-underline-offset:.2em}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}
+    .skip{position:absolute;top:-6rem;left:1rem;z-index:5;background:var(--white);padding:.75rem 1rem}
+    .skip:focus{top:1rem}
+    .wrap{width:min(1040px,calc(100% - 3rem));margin-inline:auto}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+    .brand,.eyebrow{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-weight:700;letter-spacing:.08em}
+    .brand{font-size:.85rem;text-decoration:none;color:var(--ink)}
+    nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+    nav a{font-size:.9rem;padding-block:.4rem;color:var(--ink)}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) 260px;align-items:center;gap:3rem;padding:4rem 0 3rem}
+    .eyebrow{font-size:.75rem;text-transform:uppercase;color:var(--pink);margin:0 0 1rem}
+    h1,h2,h3{line-height:1.15;letter-spacing:-.035em}
+    h1{font-size:clamp(3rem,7vw,5.4rem);margin:0 0 1rem;font-weight:850;max-width:8em}
+    .intro{max-width:32rem;margin:0;color:var(--muted);font-size:1.1rem}
+    .app-icon{display:block;width:100%;height:auto;image-rendering:pixelated;border-radius:22%;box-shadow:10px 10px 0 var(--tint)}
+    .release{padding:1rem 1.25rem;background:var(--tint);border-left:4px solid var(--pink);margin-bottom:3.5rem;font-size:.95rem}
+    .release p{margin:0}
+    .release p + p{margin-top:.3rem;color:var(--muted);font-size:.85rem}
+    .section{display:grid;grid-template-columns:190px minmax(0,1fr);gap:3rem;padding:0 0 3.5rem}
+    .section + .section{border-top:1px solid var(--line);padding-top:3.5rem}
+    .section-heading h2{font-size:1.9rem;margin:0 0 .75rem}
+    .section-heading p{font-size:.9rem;color:var(--muted);margin:0}
+    .section-heading .eyebrow{font-size:.75rem;margin-bottom:.6rem;color:var(--pink)}
+    .content{min-width:0}
+    .contact{padding:1.5rem;background:var(--white);border:1px solid var(--line);margin-bottom:1.5rem}
+    .contact h3{margin:0 0 .6rem;font-size:1.3rem}
+    .contact p{margin:.75rem 0 0}
+    .email{display:inline-block;overflow-wrap:anywhere;font-weight:700;font-size:1.15rem}
+    .small{font-size:.9rem;color:var(--muted)}
+    details{border-bottom:1px solid var(--line);padding:1rem 0}
+    summary{cursor:pointer;font-weight:650;padding-right:.5rem;line-height:1.5}
+    details p{margin:.75rem 0 .25rem;color:var(--muted)}
+    .policy h3{font-size:1.15rem;margin:1.8rem 0 .6rem}
+    .policy h3:first-of-type{margin-top:1.25rem}
+    .policy p{margin:.65rem 0;color:var(--muted)}
+    .policy strong{color:var(--ink)}
+    .policy-meta{font-size:.85rem;border-bottom:1px solid var(--line);padding-bottom:1rem;color:var(--muted)}
+    footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;padding:1.5rem 0 2.5rem;font-size:.85rem;color:var(--muted)}
+    footer p{margin:0}
+    @media(max-width:700px){.wrap{width:calc(100% - 2.5rem)}.masthead{padding:1rem 0}.hero{grid-template-columns:1fr 130px;gap:1.5rem;padding:3rem 0 2.5rem}.intro{font-size:1rem}h1{font-size:clamp(2.6rem,8vw,4rem)}.section{grid-template-columns:1fr;gap:1.5rem;padding-bottom:2.5rem}.section + .section{padding-top:2.5rem}.section-heading h2{font-size:1.75rem}.release{margin-bottom:2.5rem}.contact{padding:1.25rem}footer{flex-direction:column}}
+    @media(max-width:430px){.hero{grid-template-columns:1fr}.app-icon{width:116px;grid-row:1}h1{max-width:10em}.brand{font-size:.8rem}nav{gap:1rem}}
+    @media print{body{background:#fff}.wrap{width:100%}.masthead nav,.app-icon,.skip{display:none}.hero{display:block;padding:1rem 0}.release{margin-bottom:1rem}.section{display:block;padding-bottom:1rem}.section-heading{margin-bottom:1rem}.policy h3{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="masthead" id="top">
+      <a class="brand" href="https://nudemenft.com/">db-db-db</a>
+      <nav aria-label="Page sections"><a href="#support">Support</a><a href="#privacy">Privacy</a></nav>
+    </header>
+    <main id="main">
+      <div class="hero">
+        <div><p class="eyebrow">Support &amp; privacy</p><h1>Super Cool Style</h1><p class="intro">Your own pixel-art wardrobe. Dress up, make a scene, and share your style.<br>Made by Francis Lam / db-db-db.</p></div>
+        <img class="app-icon" src="app-icon.png" width="1024" height="1024" alt="The original Super Cool Style pixel-art logo">
+      </div>
+      <div class="release"><p><strong>Ad-free from version 2.5.0.</strong> This update keeps the original style and removes in-app advertising.</p><p>This page covers Super Cool Style 2.5.0 and later. Earlier releases may include advertising and older social-sharing integrations.</p></div>
+
+      <section class="section" id="support" aria-labelledby="support-heading">
+        <div class="section-heading"><p class="eyebrow">01 / Help</p><h2 id="support-heading">Support</h2><p>For outfits, photos, purchases, and bug reports.</p></div>
+        <div class="content">
+          <div class="contact"><h3>Get in touch</h3><a class="email" href="mailto:dbdbking@gmail.com?subject=Super%20Cool%20Style%20Support">dbdbking@gmail.com</a><p class="small">Please include your device model, iOS or iPadOS version, app version, and the steps that led to the problem. A screenshot can help. Please don’t send passwords or payment-card details.</p></div>
+          <details open><summary>How do I make an outfit?</summary><p>Use the fitting room’s tabs to change your character, clothing, accessories, and background. Choose an item to try it on, then explore its available colours and options. The help panel in the side menu explains the controls.</p></details>
+          <details><summary>How do I restore a purchase?</summary><p>Open a purchase panel in the app’s store and choose <strong>Restore</strong>. Use the same Apple Account that made the original purchase. Restoring an eligible purchase does not buy it again. If an item stays locked, email us with the pack name and the message shown in the app.</p></details>
+          <details><summary>How do I share a picture?</summary><p>Open the side menu and choose the sharing option. The iOS share sheet lets you choose from the apps and actions available on your device. A sharing destination may require its own app or account. You can also save your creation to Photos.</p></details>
+          <details><summary>Why does the app ask for Camera or Photos access?</summary><p>Camera access supports taking a background photo and scanning style QR codes. Photos access supports selecting an image for your creation or saving a finished picture. You choose when to use these features. You can change access in your device’s Settings under Super Cool Style.</p></details>
+          <details><summary>A photo won’t save or the scanner won’t open.</summary><p>Check the app’s Camera and Photos permissions in Settings and make sure your device has free storage. For QR codes, use good lighting and keep the full code in view. If the problem continues, contact us with the error message and your device details.</p></details>
+          <details><summary>The app closes or something looks wrong.</summary><p>Close and reopen Super Cool Style, then check the App Store for an update. Avoid deleting the app as a troubleshooting step: locally saved outfits, progress, and background images may be removed. Send us the steps needed to reproduce the issue.</p></details>
+          <details><summary>How do the leaderboards work?</summary><p>The game uses Apple Game Center for leaderboards. Manage your Game Center account and sharing choices in your device’s Settings. No separate account with us is needed to use Super Cool Style.</p></details>
+          <details><summary>I have a billing or refund question.</summary><p>Apple handles in-app purchase billing. Review a transaction or request a refund through <a href="https://reportaproblem.apple.com/">Apple’s Report a Problem service</a>. We do not receive your payment-card details.</p></details>
+        </div>
+      </section>
+
+      <section class="section" id="privacy" aria-labelledby="privacy-heading">
+        <div class="section-heading"><p class="eyebrow">02 / Your data</p><h2 id="privacy-heading">Privacy policy</h2><p>For Super Cool Style version 2.5.0 and later, and this support page.</p></div>
+        <div class="content policy">
+          <div class="policy-meta">Effective and last updated: <time datetime="2026-11-04">November 4, 2026</time><br>Publisher: Francis Lam / db-db-db</div>
+          <h3>Information in the app</h3>
+          <p>Super Cool Style version 2.5.0 and later contain <strong>no advertising, advertising SDKs, analytics SDKs, or cross-app tracking</strong>. The app does not require an account with us. We do not operate a player-account database or upload your creations and gameplay to a developer-operated server.</p>
+          <p>Optional features use Apple’s Game Center, in-app purchases, Camera, Photos, and sharing services as described below.</p>
+          <h3>Data stored on your device</h3>
+          <p>The app saves your outfits, inventory, game progress, scores, settings, purchase entitlements, and any photo background you choose. This information is used to restore your creations and continue playing. It stays in the app’s local storage unless you choose to export or share it, or your device includes it in a backup.</p>
+          <p>For legacy VIP-code validation, the app reads Apple’s identifier for vendor on your device and checks it locally. The app does not send this identifier to us or use it for advertising or tracking.</p>
+          <p>Deleting the app normally removes its local data. Exported pictures, device backups, purchase records, and Game Center records may remain separately under your device settings and Apple’s policies.</p>
+          <h3>Camera, Photos, and QR codes</h3>
+          <p>Camera access is used only when you choose to take a photo or scan a code. Photos access is used when you select a background image or save a creation. The app processes images and scans on your device; it does not upload them to us.</p>
+          <p>Style QR codes encode outfit information so you can exchange styles. If you share a code or picture, its recipient can see the content you chose to share. You can change Camera and Photos permissions in your device’s Settings.</p>
+          <h3>Sharing and external links</h3>
+          <p>Sharing uses the system share sheet. A selected app or service receives the picture or other content you choose to send and handles it under its own privacy policy. Super Cool Style does not automatically post your creations. This release does not include the legacy Facebook, WeChat, or Weibo SDKs.</p>
+          <p>Opening a website or external service lets that destination process its normal request information, such as your IP address. External services have their own privacy practices.</p>
+          <h3>Apple Game Center</h3>
+          <p>When you are signed in to Game Center, the game authenticates through Apple and submits scores and leaderboard values. Your Game Center profile and results may be visible to other players. We do not maintain a separate player database or send Game Center information to our own server.</p>
+          <p>Apple manages Game Center accounts and records. Read <a href="https://www.apple.com/legal/privacy/data/en/game-center/">Game Center &amp; Privacy</a> and use your device’s Game Center settings to manage your account and sharing choices.</p>
+          <h3>In-app purchases</h3>
+          <p>Apple processes optional in-app purchases. The app receives transaction results and stores your purchase entitlements locally. We do not receive payment-card details or send purchase receipts to a developer-operated server.</p>
+          <p>Apple manages purchase records, billing, refunds, and restoration under its terms and <a href="https://www.apple.com/legal/privacy/">privacy policy</a>.</p>
+          <h3>Support email</h3>
+          <p>If you email <a href="mailto:dbdbking@gmail.com?subject=Super%20Cool%20Style%20Privacy">dbdbking@gmail.com</a>, we receive your email address, message, and any attachments you choose to send. We use them to answer your request and investigate the issue. Our email provider processes messages to deliver and store this correspondence.</p>
+          <p>Support messages may remain in our email history after your request is resolved. You can request deletion of your correspondence at the same address. Please send only information relevant to your request.</p>
+          <h3>This webpage</h3>
+          <p>This page has no analytics scripts, advertising, cookies set by its code, or external embeds. It is hosted on GitHub Pages. GitHub may process technical request information, including your IP address, to serve and secure the page. Read <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s Privacy Statement</a> for details.</p>
+          <p>Opening an email link does not send a message until you choose to send it.</p>
+          <h3>Your choices</h3>
+          <p>We do not sell personal information or share app data with advertising or analytics networks. You can remove local data by deleting the app, delete exported pictures in Photos or Files, manage Apple Account and Game Center information through Apple, change device permissions, and contact us about support correspondence. There is no separate developer-held app account to delete.</p>
+          <h3>Updates and contact</h3>
+          <p>If the app’s information practices change, we will update this page and its effective date. For support or privacy questions, contact <strong>Francis Lam / db-db-db</strong> at <a href="mailto:dbdbking@gmail.com">dbdbking@gmail.com</a>.</p>
+        </div>
+      </section>
+    </main>
+    <footer><p>© 2026 Francis Lam / db-db-db · Super Cool Style</p><p><a href="#top">Back to top ↑</a> &nbsp;·&nbsp; <a href="https://nudemenft.com/">Main site</a></p></footer>
+  </div>
+</body>
+</html>
